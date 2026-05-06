@@ -7,11 +7,6 @@ for pkg in kernel kernel{-core,-modules,-modules-core,-modules-extra}; do
     rpm --erase "${pkg}" --nodeps
 done
 
-# Remove the kmods as well as they have to be built for the exact kernel version
-for pkg in kmod-xone xone-kmod-common kmod-v4l2loopback v4l2loopback; do
-    rpm --erase "${pkg}" --nodeps
-done
-
 # Cleanup leftovers that are not covered by kernel-* packages for some reason
 rm -rf /usr/lib/modules
 
@@ -23,10 +18,6 @@ dnf5 -y install \
 
 # Versionlock kernel packages to prevent them from being updated
 dnf5 versionlock add kernel kernel-devel kernel-devel-matched kernel-core kernel-modules kernel-modules-core kernel-modules-extra
-
-# Install these packages back in
-dnf -y install /tmp/rpms/{common,kmods}/*xone*.rpm
-dnf -y install /tmp/rpms/{kmods,common}/*v4l2loopback*.rpm
 
 mkdir -p /etc/pki/akmods/certs
 curl "https://github.com/ublue-os/akmods/raw/refs/heads/main/certs/public_key.der" --retry 3 -Lo /etc/pki/akmods/certs/akmods-ublue.der
