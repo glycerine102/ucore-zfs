@@ -13,7 +13,7 @@ FROM ghcr.io/ublue-os/akmods:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION
 FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods-zfs
 
 # https://github.com/ublue-os/main/pkgs/container/kinoite-main/versions
-FROM ghcr.io/ublue-os/ublue-os/kinoite-main:"${FEDORA_VERSION}" AS base
+FROM ghcr.io/ublue-os/kinoite-main:"${FEDORA_VERSION}-${CALVER_VERSION}" AS base
 
 # Copy kernel RPMs and common RPMs from akmods into the build context.
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
