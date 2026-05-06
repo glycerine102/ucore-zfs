@@ -11,8 +11,8 @@ FROM ghcr.io/ublue-os/akmods:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION
 # https://github.com/ublue-os/akmods/pkgs/container/akmods-zfs
 FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods-zfs
 
-
-FROM ghcr.io/ublue-os/aurora:"${FEDORA_VERSION}" AS base
+# https://github.com/ublue-os/main/pkgs/container/kinoite-main/versions
+FROM ghcr.io/ublue-os/ublue-os/kinoite-main:"${FEDORA_VERSION}" AS base
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=bind,from=akmods,src=/kernel-rpms,dst=/tmp/kernel-rpms \
