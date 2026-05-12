@@ -7,10 +7,10 @@ FROM scratch AS ctx
 COPY build_files /
 
 # https://github.com/ublue-os/akmods/pkgs/container/akmods/versions
-FROM ghcr.io/ublue-os/akmods:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods
+FROM ghcr.io/ublue-os/akmods:coreos-testing-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods
 
 # https://github.com/ublue-os/akmods/pkgs/container/akmods-zfs/versions
-FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods-zfs
+FROM ghcr.io/ublue-os/akmods-zfs:coreos-testing-"${FEDORA_VERSION}"-"${KERNEL_VERSION}" AS akmods-zfs
 
 # https://github.com/ublue-os/main/pkgs/container/kinoite-main/versions
 FROM ghcr.io/ublue-os/kinoite-main:"${FEDORA_VERSION}-${CALVER_VERSION}" AS base
