@@ -1,7 +1,7 @@
 # Equates to something like coreos-stable-43-6.18.13-200.fc43.x86_64
 ARG FEDORA_VERSION=44
 ARG KERNEL_VERSION=7.1.4-200.fc44
-ARG CALVER_VERSION=44-20260723.1
+ARG CALVER_VERSION=20260723.1
 
 FROM scratch AS ctx
 COPY build_files /
