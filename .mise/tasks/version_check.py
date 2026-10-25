@@ -381,6 +381,13 @@ def print_results(
             f"to search further back."
         )
 
+    # Bare version strings with the Fedora-major tag prefix stripped
+    # (coreos-{channel}-{FV}- for akmods, {FV}- for kinoite).
+    print("\nversion strings:")
+    print(latest_akmods.full_kernel)
+    if match:
+        print(f"{match.build_date}.{match.build_num}")
+
     print()
 
 
